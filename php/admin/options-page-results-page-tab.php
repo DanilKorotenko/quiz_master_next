@@ -131,6 +131,7 @@ function qsm_options_results_tab_content() {
                         $variable_list['%POLL_RESULTS_X%'] = __('X = Question ID Note: only supported for multiple choice answers', 'quiz-master-next');
                         $variable_list['%RESULT_ID%'] = __('Show result id', 'quiz-master-next');
                         $variable_list['%QUESTION_ANSWER_X%'] = __('X = Question ID. It will show result of particular question.', 'quiz-master-next');
+                        $variable_list['%USER_ANSWERS_DEFAULT_FORMAT%'] = __('User answers in text format.', 'quiz-master-next');
                         unset($variable_list['%QUESTION%']);
                         unset($variable_list['%USER_ANSWER%']);
                         unset($variable_list['%USER_ANSWERS_DEFAULT%']);

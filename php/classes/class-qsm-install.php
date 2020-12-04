@@ -914,6 +914,7 @@ class QSM_Install {
       'variables' => array(
         '%QUESTION%',
         '%USER_ANSWERS_DEFAULT%',
+        '%USER_ANSWERS_DEFAULT_FORMAT%',
         '%USER_ANSWER%',
         '%CORRECT_ANSWER%',
         '%USER_COMMENTS%',

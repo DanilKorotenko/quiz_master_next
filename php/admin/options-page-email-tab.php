@@ -138,6 +138,7 @@ function qsm_options_emails_tab_content() {
                         );  
                         $variable_list = array_merge($email_exta_variable, $variable_list);
                         $variable_list['%AVERAGE_CATEGORY_POINTS_X%'] = __('X: Category name - The average amount of points a specific category earned.', 'quiz-master-next');
+                        $variable_list['%USER_ANSWERS_DEFAULT_FORMAT%'] = __('User answers in text format.', 'quiz-master-next');
                         unset($variable_list['%QUESTION%']);
                         unset($variable_list['%USER_ANSWER%']);
                         unset($variable_list['%USER_ANSWERS_DEFAULT%']);
