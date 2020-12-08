@@ -876,12 +876,12 @@ function qsm_questions_answers_shortcode_to_text($mlw_quiz_array, $qmn_question_
                         $current_answer_zero = trim( htmlspecialchars_decode($single_answer[0], ENT_QUOTES) );
                         if ($form_type == 0 && ( $quiz_system == 0 || $quiz_system == 3 )) {
                             if (isset($single_answer[2]) && $single_answer[2] == 1 && strcasecmp( htmlspecialchars_decode($answer[1], ENT_QUOTES), $current_answer_zero ) == 0 ) {
-                                $question_with_answer_text .= 'qsm-text-correct-option qsm-text-user-correct-answer:' . htmlspecialchars_decode($answer[1], ENT_QUOTES) . '<br/>';
+                                $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($answer[1], ENT_QUOTES) . ' - Your answer is correct.<br/>';
                                 $do_show_wrong = false;
                             }
                         } else {
                             if ( isset($single_answer[2]) && strcasecmp( htmlspecialchars_decode($answer[1], ENT_QUOTES), $current_answer_zero ) == 0 ) {
-                                $question_with_answer_text .= 'qsm-text-correct-option' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                 $do_show_wrong = false;
                             }
                         }
@@ -889,16 +889,16 @@ function qsm_questions_answers_shortcode_to_text($mlw_quiz_array, $qmn_question_
                     if ($do_show_wrong) {
                         if ($form_type == 0 && ( $quiz_system == 0 || $quiz_system == 3 )) {
                             $user_given_answer = $answer[1] == '' ? __('No answer provided', 'quiz-master-next') : $answer[1];
-                            $question_with_answer_text .= 'qsm-text-wrong-option: ' . htmlspecialchars_decode($user_given_answer, ENT_QUOTES) . '<br/>';
+                            $question_with_answer_text .= '&#10007; ' . htmlspecialchars_decode($user_given_answer, ENT_QUOTES) . ' - Your answer is incorrect.<br/>';
                             foreach ($total_answers as $single_answer) {
                                 if (isset($single_answer[2]) && $single_answer[2] == 1) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                     break;
                                 }
                             }
                         } else {
                             $user_given_answer = $answer[1] == '' ? __('No answer provided', 'quiz-master-next') : $answer[1];
-                            $question_with_answer_text .= 'qsm-text-simple-option: ' . htmlspecialchars_decode($user_given_answer, ENT_QUOTES) . '<br/>';
+                            $question_with_answer_text .= '&#9675; ' . htmlspecialchars_decode($user_given_answer, ENT_QUOTES) . '<br/>';
                         }
                     }
                 } else if (isset($answer['question_type']) && $answer['question_type'] == 11) {
@@ -926,26 +926,26 @@ function qsm_questions_answers_shortcode_to_text($mlw_quiz_array, $qmn_question_
                                     }
                                 }
                                 if (isset($single_answer[2]) && $single_answer[2] == 1 && $is_answer_correct ) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option qsm-text-user-correct-answer: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Your answer is correct.<br/>';
                                 } else if (isset($single_answer[2]) && $single_answer[2] == 1) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                 } else if ( $is_answer_correct && $single_answer[2] !== 1) {
-                                    $question_with_answer_text .= 'qsm-text-wrong-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10007; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Your answer is incorrect.<br/>';
                                 } else {
-                                    $question_with_answer_text .= 'qsm-text-simple-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#9675; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
                                 }
                             }
                         } else {
                             foreach ($total_answers as $single_answer) {
                                 $single_answer_option = $single_answer[0];
                                 if (isset($single_answer[2]) && $single_answer[2] == 1 && htmlspecialchars_decode($answer[1], ENT_QUOTES) == $single_answer_option ) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option qsm-text-user-correct-answer: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Your answer is correct.<br/>';
                                 } else if (isset($single_answer[2]) && $single_answer[2] == 1) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                 } else if (htmlspecialchars_decode($answer[1], ENT_QUOTES) == $single_answer_option && $single_answer[2] !== 1) {
-                                    $question_with_answer_text .= 'qsm-text-wrong-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10007; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Your answer is incorrect.<br/>';
                                 } else {
-                                    $question_with_answer_text .= 'qsm-text-simple-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#9675; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
                                 }
                             }
                         }
@@ -954,17 +954,17 @@ function qsm_questions_answers_shortcode_to_text($mlw_quiz_array, $qmn_question_
                             $user_selected_answer = htmlspecialchars_decode($answer[1], ENT_QUOTES);
                             foreach ($total_answers as $single_answer) {
                                 if (strpos($user_selected_answer, $single_answer[0]) !== false) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                 } else {
-                                    $question_with_answer_text .= 'qsm-text-simple-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#9675; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
                                 }
                             }
                         } else {
                             foreach ($total_answers as $single_answer) {
                                 if (htmlspecialchars_decode($answer[1], ENT_QUOTES) == $single_answer[0]) {
-                                    $question_with_answer_text .= 'qsm-text-correct-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#10003; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . ' - Correct answer.<br/>';
                                 } else {
-                                    $question_with_answer_text .= 'qsm-text-simple-option: ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
+                                    $question_with_answer_text .= '&#9675; ' . htmlspecialchars_decode($single_answer[0], ENT_QUOTES) . '<br/>';
                                 }
                             }
                         }
